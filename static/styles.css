@@ -4,6 +4,14 @@ body {
     background-color: white;
 }
 
+.lotto-results-container {
+    display: flex;
+}
+
+.lotto-column {
+    flex: 1;
+}
+
 .lotto-result {
     margin-bottom: 20px;
 }
@@ -16,9 +24,35 @@ body {
     display: inline-block;
     width: 30px;
     height: 30px;
-    background-color: yellow;
+    background-color: white;
     border-radius: 50%;
     text-align: center;
     line-height: 30px;
     margin-right: 5px;
+    position: relative;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.special-number-ball {
+    background-color: yellow;
+    color: black;
+}
+
+
+.number-ball::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #888; /* Kolor kuli */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+}
+
+
+.number-ball {
+    border: none;
 }
