@@ -13,17 +13,23 @@
             <h2>Lotto i Lotto Plus</h2>
             <ul>
                 {% for result in lotto_results %}
-                <li class="lotto-result">
+                <li class="lotto-result hidden"> <!-- Dodaj klasę "hidden" -->
                     <strong>Data losowania:</strong> {{ result.drawDate }}<br>
                     <strong>Wynik losowania:</strong><br>
                     <ul>
                         {% for draw in result.drawResults %}
                         <li>
-                            <strong>Gra:</strong> {{ draw.gameType if draw.gameType != "LottoPlus" else "Lotto Plus" }}<br>
-                            <strong>Numery:</strong>
-                            {% for number in draw.numbers %}
-                            <span class="number-ball">{{ number }}</span>
-                            {% endfor %}
+                            <div class="lotto-number-section">
+                                <div class="lotto-info">
+                                    <strong>Gra:</strong> {{ draw.gameType if draw.gameType != "LottoPlus" else "Lotto Plus" }}<br>
+                                    <strong>Numery:</strong>
+                                </div>
+                                <div class="lotto-numbers">
+                                    {% for number in draw.numbers %}
+                                    <span class="number-ball">{{ number }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
                         </li>
                         {% endfor %}
                     </ul>
@@ -35,20 +41,26 @@
             <h2>EuroJackpot</h2>
             <ul>
                 {% for result in eurojackpot_results %}
-                <li class="lotto-result">
+                <li class="eurojackpot-result hidden"> <!-- Dodaj klasę "hidden" -->
                     <strong>Data losowania:</strong> {{ result.drawDate }}<br>
                     <strong>Wynik losowania:</strong><br>
                     <ul>
                         {% for draw in result.drawResults %}
                         <li>
-                            <strong>Gra:</strong> {{ draw.gameType }}<br>
-                            <strong>Numery:</strong>
-                            {% for number in draw.numbers %}
-                            <span class="number-ball">{{ number }}</span>
-                            {% endfor %}
-                            {% for special_number in draw.specialNumbers %}
-                            <span class="number-ball special-number-ball">{{ special_number }}</span>
-                            {% endfor %}
+                            <div class="lotto-number-section">
+                                <div class="lotto-info">
+                                    <strong>Gra:</strong> {{ draw.gameType }}<br>
+                                    <strong>Numery:</strong>
+                                </div>
+                                <div class="lotto-numbers"> <!-- Dodaj klasę "lotto-numbers-eurojackpot" -->
+                                    {% for number in draw.numbers %}
+                                    <span class="number-ball">{{ number }}</span>
+                                    {% endfor %}
+                                    {% for special_number in draw.specialNumbers %}
+                                    <span class="number-ball special-number-ball">{{ special_number }}</span> <!-- Dodaj specjalną klasę dla liczby specjalnej -->
+                                    {% endfor %}
+                                </div>
+                            </div>
                         </li>
                         {% endfor %}
                     </ul>
@@ -57,5 +69,7 @@
             </ul>
         </div>
     </div>
+    <button id="showMore">Pokaż więcej</button>
+    <script src="/static/scripts.js"></script>
 </body>
 </html>

@@ -20,6 +20,22 @@ body {
     display: block;
 }
 
+.lotto-number-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.lotto-info {
+    flex: 1;
+}
+
+.lotto-numbers {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
 .number-ball {
     display: inline-block;
     width: 30px;
@@ -28,7 +44,7 @@ body {
     border-radius: 50%;
     text-align: center;
     line-height: 30px;
-    margin-right: 5px;
+    margin-left: 5px;
     position: relative;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
@@ -38,20 +54,18 @@ body {
     color: black;
 }
 
-
 .number-ball::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #888; /* Kolor kuli */
+    background-color: #888;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
     z-index: -1;
 }
-
 
 .number-ball {
     border: none;
