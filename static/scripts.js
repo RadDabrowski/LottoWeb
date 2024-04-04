@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let page = 1;
     const resultsPerPage = 10;
 
-    // Ukryj wszystkie wyniki na początku
     lottoToShow.forEach(result => {
         result.style.display = "none";
     });
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
         result.style.display = "none";
     });
 
-    // Pokaż pierwsze 10 wyników po załadowaniu strony
     for (let i = 0; i < resultsPerPage && i < lottoToShow.length; i++) {
         lottoToShow[i].style.display = "block";
     }

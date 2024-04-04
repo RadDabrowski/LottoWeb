@@ -1,40 +1,81 @@
-/* styles.css */
-
 body {
     background-color: white;
+    font-family: Arial, sans-serif;
 }
 
-.lotto-results-container {
-    display: flex;
-}
-
-.lotto-column {
-    flex: 1;
-}
-
-.lotto-result {
+h1 {
+    font-size: 24px;
     margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    margin-bottom: 20px;
+}
+
+.tablink {
+    flex: 1;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.tablink:hover {
+    background-color: #ddd;
+}
+
+.tabcontent {
+    display: none;
+}
+
+.lottery-header {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.lottery-results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+
+.lotto-result, .eurojackpot-result {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex: 0 0 calc(50% - 20px);
+    display: flex;
+    justify-content: space-between;
 }
 
 .draw-date {
     display: block;
-}
-
-.lotto-number-section {
-    display: flex;
-    align-items: center;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.lotto-info {
-    flex: 1;
+.lottery-info {
+    margin-bottom: 10px;
 }
 
-.lotto-numbers {
+.lottery-balls {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
 }
 
+.lottery-numbers {
+    margin-left: auto;
+    display: flex;
+    justify-content: right;
+}
 
 .number-ball {
     display: inline-block;
@@ -67,6 +108,23 @@ body {
     z-index: -1;
 }
 
-.number-ball {
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+#showMore {
+    background-color: #f0f0f0;
     border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#showMore:hover {
+    background-color: #ddd;
 }

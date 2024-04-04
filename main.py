@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -29,7 +29,6 @@ async def get_lotto_results(request: Request):
         data_lotto = response_lotto.json()
         data_eurojackpot = response_eurojackpot.json()
 
-        # Pobranie wyników Lotto
         lotto_results = []
         for item in data_lotto.get("items", []):
             draw_date = datetime.strptime(item.get("drawDate"), "%Y-%m-%dT%H:%M:%SZ").strftime("%d-%m-%Y")
@@ -40,7 +39,6 @@ async def get_lotto_results(request: Request):
                 draw_results.append({"gameType": game_type, "numbers": numbers})
             lotto_results.append({"drawDate": draw_date, "drawResults": draw_results})
 
-        # Pobranie wyników EuroJackpot
         eurojackpot_results = []
         for item in data_eurojackpot.get("items", []):
             draw_date = datetime.strptime(item.get("drawDate"), "%Y-%m-%dT%H:%M:%SZ").strftime("%d-%m-%Y")
@@ -48,7 +46,7 @@ async def get_lotto_results(request: Request):
             for draw in item.get("results", []):
                 game_type = draw.get("gameType")
                 numbers = sorted(draw.get("resultsJson", []))
-                special_numbers = sorted(draw.get("specialResults", []))  # Dodatkowe liczby
+                special_numbers = sorted(draw.get("specialResults", []))
                 draw_results.append({"gameType": game_type, "numbers": numbers, "specialNumbers": special_numbers})
             eurojackpot_results.append({"drawDate": draw_date, "drawResults": draw_results})
 
